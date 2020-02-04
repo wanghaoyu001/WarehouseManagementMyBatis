@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- DBconnaction -->
+<configuration>
+<!-- 引入jdbc连接数据库文件-->
+<properties resource="jdbc.properties"/>
+
+<settings>
+<!-- 打印查询语句 -->
+    <setting name="logImpl" value="STDOUT_LOGGING" />
+</settings>
+<!-- 实体类的别名 -->
+<typeAliases>
+	<typeAlias type="com.pojo.BuyIn" alias="BuyIn"/>
+	<typeAlias type="com.pojo.Login" alias="Login"/>
+	<typeAlias type="com.pojo.BuyInSearch" alias="BuyInSearch"/>
+	<typeAlias type="com.pojo.ProductInfo" alias="ProductInfo"/>
+</typeAliases>
+<!-- 数据库连接环境配置 -->
+<environments default="development">
+	<environment id="development">
+		<transactionManager type="JDBC"/>
+		<dataSource type="POOLED">
+			<property name="driver" value="${driverclass}"/>
+			<property name="url" value="${url}"/>
+			<property name="username" value="${user}"/>
+			<property name="password" value="${password}"/>
+		</dataSource>
+	</environment>
+</environments>
+<!-- mapper映射文件配置 -->
+<mappers>
+<mapper resource="com/mapper/BuyinMapper.xml"/>
+<mapper resource="com/mapper/LoginMapper.xml"/>
+</mappers>
+
+</configuration>
